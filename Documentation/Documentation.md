@@ -1,7 +1,7 @@
 
 # FrontFace Plugin SDK - Documentation
 
-**Version 4.6.4** (Rel. 01-12-2022)
+**Version 4.6.4** (Rel. 13-01-2023)
 
 The *FrontFace Plugin SDK* allows you to extend the [FrontFace digital signage & kiosk software](https://www.mirabyte.com/en/frontface/) with custom functionality. The SDK (Software Development Kit) is based on the *Microsoft .NET 4.8 Framework* and *Windows Presentation Foundation (WPF)*. For developing your own plugins, you also need *Microsoft Visual Studio 2022* (both, the regular versions as well as the free [Community Editions](https://visualstudio.microsoft.com/en-US/vs/community/) are supported!). Plugins can be either written in C# (recommended) or in any other .NET language like e.g., VB.NET.
 
@@ -126,7 +126,7 @@ Tells the player app what to do. In most cases ``StartPlaylist`` will be the typ
 The period of time for which the playlist that is triggered by the event should run. If you set a value lower than 5 seconds (which is the minimum duration), the playlist will be shown forever or for the given number of loops (see ``LoopCount``).
 
   * ``LoopCount``  
-Instead of providing a duration (see ``Duration``) you can also set the number of loops for which the playlist should be shown. E.g., if you set a value of ``0`` the playlist will be shown only once, for a value if ``0`` it will be shown twice, etc. - A value of ``-1`` indicates that the playlist will run forever (or as long defined in the ``Duration`` field).
+Instead of providing a duration (see ``Duration``) you can also set the number of loops for which the playlist should be shown. E.g., if you set a value of ``0`` the playlist will be shown only once, for a value if ``0`` it will be shown twice, etc. - A value of ``-1`` indicates that the playlist will run forever (or as long as defined in the ``Duration`` field).
 
   * ``Parameters``  
 This field is reserved for future use.
@@ -140,7 +140,7 @@ The ID of the playlist that is supposed to be started. If you leave this field e
   * ``PlaylistPage``  
 The index of the page on which the playlist should start. If you set ``-1`` (default), the playlist will start from the beginning. The index of the first page is ``0``.
 
-If your plugin does support multiple instances that run that the same time, make sure to set the ``AllowMultipleInstances`` property to return ``True``. However, you must make sure by yourself that your plugin works correctly if multiple instances get created within the same app domain. Please see [section 9](#9-debugging-plugins-using-microsoft-visual-studio) of this document for details!
+If your plugin does support multiple instances that run at the same time, make sure to set the ``AllowMultipleInstances`` property to return ``True``. However, you must make sure by yourself that your plugin works correctly if multiple instances get created within the same app domain. Please see [section 9](#9-debugging-plugins-using-microsoft-visual-studio) of this document for details!
 
 ## 5. Implementing a Service Plugin
 
@@ -231,37 +231,57 @@ The actual DLL file of the plugin is stored in in the folder ``\Deployment\FFPWI
 ```
 > **Notice:** The XML Schema (XSD) for the plugin manifest file also available as part of this SDK (``Manifest.xsd``). You can use the schema to validate your own, custom manifest file.
 
-In the ``AddOn`` tag, the type (``xsi:type`` attribute) of the plugin (either **``ContentPlugin``**, **``EventSourcePlugin``** or **``ServicePlugin``**) is specified. In addition to that, the filename of the ``*.ffapx`` file without the file extension is specified (``filename`` attribute). This name is used internally and should be unique!
+### Specification of Plugin Type
 
-The actual DLL file of the plugin is defined in the ``codebase`` attribute of the ``Product`` tag within the ``Products`` tag (only the name of the DLL). The settings GUI is referenced by the ``codebase`` attribute of the ``SettingsUI`` tag. Please note, that here, the full, relative path must be specified. In case the plugin DLL and the settings GUI DLL are the same, you must specify the path as ``Deployment\FFPWIN\AssemblyFile.dll``. The settings DLL must always be a Windows DLL since the settings UI is only used by the FrontFace Assistant.
+In the ``AddOn`` tag, the type (``xsi:type`` attribute) of the plugin (either **``ContentPlugin``**, **``EventSourcePlugin``** or **``ServicePlugin``**) is specified. In addition to that, the filename of the ``*.ffapx`` file without the file extension is specified (``filename`` attribute) need to be given. This name is used internally and should be unique!
 
-If your plugin only works with a specific version of FrontFace, you can also define a ``minVersion`` that refers to the installed product version of FrontFace. If an older version of FrontFace is installed, the FrontFace Assistant will not allow the user to install the plugin.
+### Plugin DLLs & Supported Platforms
 
-If you also provide an Android version of your plugin, an additional ``Product`` tag with the name attribute ``FFPANDROID`` must be specified. Otherwise, only one ``Product`` tag with the name attribute ``FFPWIN`` is required.
+The actual DLL file of the plugin is defined in the ``codebase`` attribute of the ``Product`` tag within the ``Products`` tag (only the name of the DLL). If you also provide an Android version of your plugin, an additional ``Product`` tag with the name attribute ``FFPANDROID`` must be specified. Otherwise, only one ``Product`` tag with the name attribute ``FFPWIN`` is required.
 
-You may also specify a ``Version`` of your plugin and if your plugin supports running multiple instances of it or not (``AllowMultipleInstances`` tag).
+The settings GUI is referenced by the ``codebase`` attribute of the ``SettingsUI`` tag. Please note, that here, the full, relative path must be specified. In case the plugin DLL and the settings GUI DLL are the same, you must specify the path as ``Deployment\FFPWIN\AssemblyFile.dll`` if ``AssemblyFile.dll`` is your plugin DLL. The settings DLL must always be a Windows DLL since the settings UI is only used by the FrontFace Assistant. This means that plugins that are developed for Android only, always need to have a separate Windows DLL for the settings dialog.
+
+If your plugin only works with a specific version of FrontFace, you can also define a ``minVersion`` that refers to the installed product version of FrontFace. When running an older version of FrontFace, the FrontFace Assistant will not allow the user to install the plugin.
+
+### 3rd Party DLLs and Dependencies
+
+In case you use 3rd party libraries, you need to supply the required DLL files together with your plugin DLL. The files must be stored in the same folder (either ``FFPWIN`` or ``FFPANDROID``) as the plugin DLL file.
+
+### Versioning
+
+You may also specify a ``Version`` of your plugin (schema: ``Major.Minor.Build``). Older versions of a plugin cannot be installed over newer versions of the same plugin (the FrontFace Assistant will show a warning!)
+
+### Multi-Instance-Support
+
+If your plugin supports running multiple instances at the same time, the ``AllowMultipleInstances`` must be set to ``True`` and otherwise to ``False``.
+
+### Naming and Localization
 
 The name of the plugin that is displayed to the user is specified using the ``Name`` tag and the ``About`` tag in the ``Info`` tag. Since the name and the about text can be localized, you can add different texts for any language that you want to support. Just add the ``lang`` attribute to the ``name`` tag and set the ISO two-letter language code as value. The same also applies for the description text which is stored in the ``Description`` tag(s) within the ``Descriptions`` tag. 
 
+### Documentation / Manual
+
 If you want to provide a user manual, you can either enter HTML-formatted text to the ``Manual`` tag in the ``Manuals`` tag as CDATA or instead, reference to a PDF file that is located in the ``\Assets\`` folder of the plugin package (for more complex manuals!).
 
-The ``\Assets\`` folder may also be used to store any accompanying files (such as sample files) that the user might require when working with the plugin.
+### Additional Files
+
+The ``\Assets\`` folder may also be used to store any accompanying files (such as sample files) that the user might require when working with the plugin. These files can be accessed from within the plugin settings dialog in the FrontFace Assistant.
 
 ## 8. Sample Projects and Plugin Tester Application
 
 The FrontFace Plugin SDK includes two sample plugins (a **Content Plugin** and an **Event Source Plugin**) for both Windows and Android that come with full C# source code (``Sample Content Plugin.sln`` and ``Sample Event Source Plugin.sln``) which show how a plugin can be implemented.
 
-To test a plugin, you install the plugin in a FrontFace project using the FrontFace Assistant. However, the FrontFace Plugin SDK also includes an application called ``Plugin Tester.exe`` that helps you to test your plugins prior to trying them with FrontFace. When you start the Plugin Tester application, you can select the plugin DLL file (for testing while developing) or the final ``*.ffapx`` file from a file dialog. Alternatively, you can also specify the filename and path as command line argument for the plugin tester application (which allows an easy integration into Visual Studio or other IDEs, see [section 7](#7-file-structure-and-deployment) for details!).
+To test a plugin, you install the plugin in a FrontFace project using the FrontFace Assistant. However, the FrontFace Plugin SDK also includes an application called ``Plugin Tester.exe`` that helps you to test your plugins prior to trying them with FrontFace. When you start the Plugin Tester application, you can select the plugin DLL file (for testing while developing) or the final ``*.ffapx`` file from a file dialog. Alternatively, you can also specify the filename and path as command line argument for the plugin tester application (which allows an easy integration into Visual Studio or other IDEs, see [section 9](#9-debugging-plugins-using-microsoft-visual-studio) for details!).
 
 By clicking on the lifecycle steps “Load”, “Start” and “Destroy”, you can simulate the lifecycle of the plugin in the FrontFace Player App.
 
 ![Screenshot of the FrontFace Plugin Tester Application](plugintester.png)
 
-The Plugin Tester application can be used to test both, the presentation UI of a Content Plugin, the trigger of an Event Source Plugin, and the the settings GUI.
+The Plugin Tester application can be used to test both, the presentation UI of a Content Plugin, the trigger of an Event Source Plugin, a Service Plugin and the the settings GUI.
 
 Because some plugins may have references to 3rd party DLLs that are present in the FrontFace application directory, the Plugin Tester application must be present in the same folder as the FrontFace Player App and FrontFace Assistant!
 
-The Plugin Tester application can also display the output of any logging activity of the plugin (see [section 8](#8-sample-projects-and-plugin-tester-application) for details) and has a built-in memory leakage detection function. This can be used to measure quantitatively if the plugin has a memory leak that may cause problems when running in 24/7 mode.
+The Plugin Tester application can also display the output of any logging activity of the plugin and has a built-in memory leakage detection function. This can be used to measure quantitatively if the plugin has a memory leak that may cause problems when running in 24/7 mode.
 
 ## 9. Debugging Plugins using Microsoft Visual Studio
 
