@@ -2,7 +2,7 @@
 
 ![FrontFace Plugin](Documentation/pluginicon.png)
 
-Plugin SDK for [**FrontFace Digtal** Signage &amp; Kiosk Software](https://www.mirabyte.com/en/frontface/).
+Plugin SDK for [**FrontFace** Digital Signage &amp; Kiosk Software](https://www.mirabyte.com/en/frontface/).
 
 ## About
 
@@ -14,9 +14,9 @@ In order to use this SDK, you should have C# programming skills and should be fa
 
 Detailed information on how to create custom plugins for FrontFace can be found in the [SDK Documentation](Documentation/Documentation.md).
 
-In the included C# sample projects are provided in the ``\Sample Projects\`` folder of this repository.
+The included C# sample projects are provided in the ``\Sample Projects\`` folder of this repository.
 
-To install the **Plugin Tester App**, please first download and install [FrontFace](https://www.mirabyte.com/en/frontface/download.html) (installation type *"Full Installation"*) on your development machine. Then download the Plugin Tester App from the [Releases](https://github.com/mirabyte/FrontFacePluginSDK/releases) section of this repository and extract the files into the installation folder of FrontFace (usually ``C:\Porgrams\mirabyte\FrontFace\``). You can then start the Plugin Tester App by launching ``Plugin Tester.exe``.
+To install the **Plugin Tester App**, please first download and install [FrontFace](https://www.mirabyte.com/en/frontface/download.html) (installation type *"Full Installation"*) on your development machine. Then download the Plugin Tester App from the [Releases](https://github.com/mirabyte/FrontFacePluginSDK/releases) section of this repository and extract the files into the installation folder of FrontFace (usually ``C:\Program Files\mirabyte\FrontFace\``). You can then start the Plugin Tester App by launching ``Plugin Tester.exe``.
 
 > **Important:** Make sure that you download the version of the Plugin Tester App that matches with your FrontFace installation!
 
