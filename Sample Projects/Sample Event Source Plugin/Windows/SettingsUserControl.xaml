@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Sample_Event_Source_Plugin.SettingsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sample_Event_Source_Plugin"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Vertical">
+            <TextBlock Text="Interval for Generating Events [sec.]:" Margin="0,0,0,5" />
+            <TextBox x:Name="tbInterval" Padding="2" Width="50"  HorizontalAlignment="Left" />
+
+            <GroupBox Header="Duration:" Margin="0,10,0,5">
+                <StackPanel Orientation="Vertical" Margin="10,0,10,10">
+                    <TextBlock Text="Display Duration of Playlist [sec.]:" Margin="0,10,0,5" />
+                    <TextBox x:Name="tbDisplayDuration" Width="50" Padding="2" HorizontalAlignment="Left"/>
+
+                    <TextBlock Text="and/or" Margin="0,10,0,0" />
+
+                    <TextBlock Text="Loop Count (&quot;-1&quot; = auto/forever):" Margin="0,10,0,5" />
+                    <TextBox x:Name="tbLoopCount" Width="50" Padding="2" HorizontalAlignment="Left" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Action to Perform by the Event:" Margin="0,10,0,5">
+                <StackPanel Margin="10,10,10,10">
+                    <RadioButton x:Name="rbStartPlaylist" GroupName="rgAction" Content="Start Selected Playlist" />
+                    <RadioButton x:Name="rbStopPlaylist" GroupName="rgAction" Content="Stop Playlist" />
+                </StackPanel>
+            </GroupBox>
+
+            <TextBlock Text="Placeholders:" Margin="0,10,0,5" />
+            <TextBox x:Name="tbPlaceholders" AcceptsReturn="True" TextWrapping="Wrap" Height="80" Padding="2" />
+            <TextBlock FontStyle="Italic">(Enter as key=value, line by line!)</TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

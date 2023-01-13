@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AddOn xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       schemaVersion="2.0" xsi:type="ContentPlugin" fileName="MyContentPlugin">
+  <Products>
+    <Product name="FFPWIN" minVersion="4.6.0" advertised="true" codeBase="MyContentPlugin.dll" />
+    <Product name="FFPANDROID" minVersion="4.6.0" advertised="true" codeBase="MyContentPlugin.dll" />
+  </Products>
+  <SettingsUI codeBase="Deployment\FFPWIN\MyContentPlugin.dll" />
+  <Version>1.0.0</Version>
+  <IsTrial freeDownload="false">false</IsTrial>
+  <Info>
+    <Name>My Content Plugin</Name>
+    <About>About my Content Plugin.</About>
+    <Name lang="de">Mein Content Plugin</Name>
+    <About lang="de">Über mein Content Plugin.</About>
+  </Info>
+  <Descriptions>
+    <Description>Description about Content Plugin here.</Description>
+    <Description lang="de">Beschreibung zum Content-Plugin hier.</Description>
+  </Descriptions>
+  <Manuals>
+    <Manual><![CDATA[HTML-formatted user manual text goes here...]]></Manual>
+    <Manual lang="de"><![CDATA[HTML-formatierter Benutzerhandbuch-Text hier...]]></Manual>
+  </Manuals>
+</AddOn>
