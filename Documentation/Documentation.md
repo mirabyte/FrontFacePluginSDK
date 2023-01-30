@@ -229,7 +229,7 @@ The actual DLL file of the plugin is stored in in the folder ``\Deployment\FFPWI
   </Manuals>
 </AddOn>
 ```
-> **Notice:** The XML Schema (XSD) for the plugin manifest file also available as part of this SDK (``Manifest.xsd``). You can use the schema to validate your own, custom manifest file.
+> **Notice:** The XML Schema (XSD) for the plugin manifest file also available as part of this SDK ([``Manifest.xsd``](../Manifest.xsd)). You can use the schema to validate your own, custom manifest file.
 
 ### Specification of Plugin Type
 
