@@ -1,1 +1,21 @@
-TODO: To be added.
+mirabyte FrontFace Plugin SDK Software License
+==============================================
+
+Date: 30-01-2023
+
+The FrontFace Plugin SDK (specification, documentation, samples, tools) is 
+provided by mirabyte GmbH & Co. KG (license provider) to FrontFace customers 
+and their contractors or service providers (licensee) free of charge with the 
+intention to allow the creation of custom plugins for the FrontFace digital 
+signage and kiosk software.
+
+The copyright and the right of distribution for plugins created by the licensee
+fully remain with the licensee.
+
+The use and the distribution of the FrontFace Plugin SDK for any other purpose 
+than developing plugins for the FrontFace software is prohibited.
+
+
+Copyright © 2011-2023 by mirabyte GmbH & Co. KG. All rights reserved.
+
+Contact: info@mirabyte.com	Web: https://www.mirabyte.com/
