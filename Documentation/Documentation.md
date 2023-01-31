@@ -1,7 +1,7 @@
 
 # FrontFace Plugin SDK - Documentation
 
-**Version 4.6.4** (Rel. 13-01-2023)
+**Version 4.6.4** (Rel. 31-01-2023)
 
 The *FrontFace Plugin SDK* allows you to extend the [FrontFace digital signage & kiosk software](https://www.mirabyte.com/en/frontface/) with custom functionality. The SDK (Software Development Kit) is based on the *Microsoft .NET 4.8 Framework* and *Windows Presentation Foundation (WPF)*. For developing your own plugins, you also need *Microsoft Visual Studio 2022* (both, the regular versions as well as the free [Community Editions](https://visualstudio.microsoft.com/en-US/vs/community/) are supported!). Plugins can be either written in C# (recommended) or in any other .NET language like e.g., VB.NET.
 
@@ -86,10 +86,18 @@ When a paused playlist is continued, this method is called. You can now resume t
 * ``NotifyDisappear(bool liveView)``  
 This method is called when the plugin is about to be removed from the screen. The ``liveView`` parameter is ``True`` if the plugin should continue to animate during the transition effect. If the value is ``False``, you should stop any visual animation on the screen by now.
 
+* ``ShowNextContentPage()``
+This method is called when the player asks the plugin to show the next page in a sequence of pages (pageable content). The method is not called if ``ContentPageIndex`` >= ``ContentPageCount``. If the content does not show any pageable content, this method can be ignored.
+
+* ``ShowPreviousContentPage()``
+This method is called when the player asks the plugin to show the previous page in a sequence of pages (pageable content). The method is not called if ``ContentPageIndex`` <= ``ContentPageCount``. If the content does not show any pageable content, this method can be ignored.
+
 * ``Free()``  
 This is the last method that is called when the plugin has disappeared from the screen and is not needed any more. You should now finally stop any actions, timers or animations and dispose anything that needs to be disposed. After that, the plugin instance is gone and will be ultimately removed by the .NET garbage collector.
 
-To tell the player app if the plugin has a natural duration (e.g., like a video), you have to make sure that the plugin returns either ``0`` if it has no duration (like e.g., a picture) or ``1`` if it does have a duration (e.g., like a video) as value of the ``HasDuration`` property. If the plugin does have a natural duration, please make sure that you fire the ``Finished`` event by calling the ``HasFinished()`` method in order to tell the player app that the plugin has now ended.
+To tell the player app if the plugin has a natural duration (e.g., like a video), you have to make sure that the plugin returns either ``0`` if it has no duration (like e.g., a picture) or ``1`` if it does have a duration (e.g., like a video) as value of the ``HasDuration`` property. If the plugin does have a natural duration, please make sure that you fire the ``Finished`` event by calling the ``HasFinished()`` method in order to tell the hosting FrontFace player app that the plugin has now ended.
+
+If the plugin displays pageable content (content that consists of mulitple screen pages, e.g. a multi-page document), you need to set the ``ContentPageCount`` and ``ContentPageIndex`` properties to tell the hosting FrontFace player app the total number of available pages and the index of the currently displayed page. The intial values of both properties is ``1`` (= non-pageable content). The ``ContentPageIndex`` of the first page is ``1``; the ``ContentPageIndex`` of the last page equals ``ContentPageCount``. Both, the total number of pages and the current page index can be updated at any time during the lifecycle of the plugin (e.g. if ``ShowNextContentPage()`` or ``ShowPreviousContentPage()`` is called or if the number of pages should change). Updates of the these properties are propagated automatically to the hosting FrontFace player app.
 
 If your plugin interacts with the user, please set the LastUserInteraction property to the current date/time (``DateTime.Now``) of the system clock whenever there was an interaction with the user.
 
