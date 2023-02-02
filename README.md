@@ -12,9 +12,9 @@ The FrontFace Plugin SDK allows the creation of custom plugins for the FrontFace
 
 In order to use this SDK, you should have C# programming skills and should be familiar with Microsoft Visual Studio.
 
-Detailed information on how to create custom plugins for FrontFace can be found in the [SDK Documentation](Documentation/Documentation.md).
+**Detailed information on how to create custom plugins for FrontFace can be found in the [SDK Documentation](Documentation/Documentation.md).**
 
-The included C# sample projects are provided in the ``\Sample Projects\`` folder of this repository.
+The included C# **sample projects** are provided in the ``\Sample Projects\`` folder of this repository.
 
 To install the **Plugin Tester App**, please first download and install [FrontFace](https://www.mirabyte.com/en/frontface/download.html) (installation type *"Full Installation"*) on your development machine. Then download the Plugin Tester App from the [Releases](https://github.com/mirabyte/FrontFacePluginSDK/releases) section of this repository and extract the files into the installation folder of FrontFace (usually ``C:\Program Files\mirabyte\FrontFace\``). You can then start the Plugin Tester App by launching ``Plugin Tester.exe``.
 
