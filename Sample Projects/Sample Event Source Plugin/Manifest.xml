@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <AddOn xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-       schemaVersion="2.0" xsi:type="EventSourcePlugin" fileName="MyEventSourcePlugin">
+       schemaVersion="2.1" xsi:type="EventSourcePlugin" fileName="MyEventSourcePlugin">
   <Products>
     <Product name="FFPWIN" minVersion="4.6.0" advertised="true" codeBase="MyEventSourcePlugin.dll" />
     <Product name="FFPANDROID" minVersion="4.6.0" advertised="true" codeBase="MyEventSourcePlugin.dll" />

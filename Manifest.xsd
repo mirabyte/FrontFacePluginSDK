@@ -33,6 +33,24 @@
           </xsd:complexType>
         </xsd:element>
         <xsd:element name="AllowMultipleInstances" type="xsd:boolean" />
+        <xsd:element name="PlaylistSelectionCardinality" default="None">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="None"/>
+              <xsd:enumeration value="Single"/>
+              <xsd:enumeration value="Multi"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="PlaylistSelectionFilter" default="OnlySequentialPlaylists">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="All"/>
+              <xsd:enumeration value="OnlySequentialPlaylists"/>
+              <xsd:enumeration value="OnlyTouchMenus"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
         <xsd:element name="Info">
           <xsd:complexType>
             <xsd:sequence>

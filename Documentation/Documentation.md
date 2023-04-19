@@ -1,7 +1,7 @@
 
 # FrontFace Plugin SDK - Documentation
 
-**Version 4.6.4** (Rel. 31-01-2023)
+**Version 4.6.5** (Rel. 17-04-2023)
 
 The *FrontFace Plugin SDK* allows you to extend the [FrontFace digital signage & kiosk software](https://www.mirabyte.com/en/frontface/) with custom functionality. The SDK (Software Development Kit) is based on the *Microsoft .NET 4.8 Framework* and *Windows Presentation Foundation (WPF)*. For developing your own plugins, you also need *Microsoft Visual Studio 2022* (both, the regular versions as well as the free [Community Editions](https://visualstudio.microsoft.com/en-US/vs/community/) are supported!). Plugins can be either written in C# (recommended) or in any other .NET language like e.g., VB.NET.
 
@@ -212,8 +212,8 @@ The actual DLL file of the plugin is stored in in the folder ``\Deployment\FFPWI
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <AddOn xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance  
-       xmlns:xsd=http://www.w3.org/2001/XMLSchema schemaVersion="2.0" xsi:type="ContentPlugin" 
-       fileName="UniqueName">
+       xmlns:xsd=http://www.w3.org/2001/XMLSchema 
+       schemaVersion="2.1" xsi:type="ContentPlugin" fileName="UniqueName">
   <Products>
     <Product name="FFPWIN" minVersion="4.6.0" codeBase="AssemblyName.dll" />
     <Product name="FFPANDROID" minVersion="4.6.0" codeBase="AssemblyName.dll" />
@@ -221,6 +221,8 @@ The actual DLL file of the plugin is stored in in the folder ``\Deployment\FFPWI
   <SettingsUI codeBase="Deployment\FFPWIN\AssemblyName.dll" />
   <Version>1.0.0</Version>
   <AllowMultipleInstances>true</AllowMultipleInstances>
+  <PlaylistSelectionCardinality>Multi</PlaylistSelectionCardinality>
+  <PlaylistSelectionFilter>OnlySequentialPlaylists</PlaylistSelectionFilter>
   <Info>
     <Name>My Event Source Plugin</Name>
     <About>About my Event Source Plugin.</About>
@@ -242,6 +244,12 @@ The actual DLL file of the plugin is stored in in the folder ``\Deployment\FFPWI
 ### Specification of Plugin Type
 
 In the ``AddOn`` tag, the type (``xsi:type`` attribute) of the plugin (either **``ContentPlugin``**, **``EventSourcePlugin``** or **``ServicePlugin``**) is specified. In addition to that, the filename of the ``*.ffapx`` file without the file extension is specified (``filename`` attribute) need to be given. This name is used internally and should be unique!
+
+The ``Version`` tag is used to determine the version of the plugin (Major.Minor.Build). 
+
+The tag ``AllowMultipleInstances`` indicates if the plugin may be instanciated more than once at the same time at runtime. 
+
+For event source plugins and service plugins, the optional tag ``PlaylistSelectionCardinality`` defines if the plugin should allow the selection of ``None``,``Single`` or ``Multi`` playlists and the tag ``PlaylistSelectionFilter`` defines, if these playlists can be of any type (``All``) or ``OnlySequentialPlaylists`` or ``OnlyTouchMenus``.
 
 ### Plugin DLLs & Supported Platforms
 
