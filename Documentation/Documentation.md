@@ -1,7 +1,7 @@
 
 # FrontFace Plugin SDK - Documentation
 
-**Version 4.6.6** (Rel. 24-05-2023)
+**Version 4.6.7** (Rel. 06-07-2023)
 
 The *FrontFace Plugin SDK* allows you to extend the [FrontFace digital signage & kiosk software](https://www.mirabyte.com/en/frontface/) with custom functionality. The SDK (Software Development Kit) is based on the *Microsoft .NET 4.8 Framework* and *Windows Presentation Foundation (WPF)*. For developing your own plugins, you also need *Microsoft Visual Studio 2022* (both, the regular versions as well as the free [Community Editions](https://visualstudio.microsoft.com/en-US/vs/community/) are supported!). Plugins can be either written in C# (recommended) or in any other .NET language like e.g., VB.NET.
 
@@ -221,6 +221,7 @@ The actual DLL file of the plugin is stored in in the folder ``\Deployment\FFPWI
   <SettingsUI codeBase="Deployment\FFPWIN\AssemblyName.dll" />
   <Version>1.0.0</Version>
   <AllowMultipleInstances>true</AllowMultipleInstances>
+  <AllowMultipleInstancesPerScreen>true</AllowMultipleInstancesPerScreen>
   <PlaylistSelectionCardinality>Multi</PlaylistSelectionCardinality>
   <PlaylistSelectionFilter>OnlySequentialPlaylists</PlaylistSelectionFilter>
   <Info>
@@ -247,7 +248,7 @@ In the ``AddOn`` tag, the type (``xsi:type`` attribute) of the plugin (either **
 
 The ``Version`` tag is used to determine the version of the plugin (Major.Minor.Build). 
 
-The tag ``AllowMultipleInstances`` indicates if the plugin may be instanciated more than once at the same time at runtime. 
+The tag ``AllowMultipleInstances`` indicates if the plugin may be instanciated more than once at the same time at runtime. Specifically for **Event Source Plugins**, which are registered per screen, the optional tag ``AllowMultipleInstancesPerScreen`` is available which lets you limit the number of instances of the plugin per screen.
 
 For event source plugins and service plugins, the optional tag ``PlaylistSelectionCardinality`` defines if the plugin should allow the selection of ``None``,``Single`` or ``Multi`` playlists and the tag ``PlaylistSelectionFilter`` defines, if these playlists can be of any type (``All``) or ``OnlySequentialPlaylists`` or ``OnlyTouchMenus``.
 
