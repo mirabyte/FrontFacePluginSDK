@@ -26,4 +26,4 @@ If you need help, please contact us by e-mail: <support@mirabyte.com>
 
 
 ---
-Copyright ©2018-2023 by mirabyte GmbH & Co. KG. All rights reserved.
+Copyright ©2018-2024 by mirabyte GmbH & Co. KG. All rights reserved.
