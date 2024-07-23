@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Sample Content Plugin Android")]
-[assembly: AssemblyCopyright("Copyright ©  2018-2020")]
+[assembly: AssemblyCopyright("Copyright ©  2018-2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

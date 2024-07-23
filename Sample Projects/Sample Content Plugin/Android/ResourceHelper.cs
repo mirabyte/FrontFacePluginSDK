@@ -1,6 +1,4 @@
 ﻿using Android.Graphics;
-using System.IO;
-using System.Linq;
 
 namespace Sample_Content_Plugin_Android
 {

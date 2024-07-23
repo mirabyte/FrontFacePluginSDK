@@ -72,7 +72,7 @@ namespace Sample_Event_Source_Plugin
             else
                 UserControl.rbStartPlaylist.IsChecked = true;
 
-            // Convert placeholders from List to a new-line-seperated string
+            // Convert placeholders from List to a new-line-separated string
             if (string.IsNullOrWhiteSpace(PluginSettings.Placeholders))
             {
                 if (EnvironmentInfo.AvailablePlaceholders != null)

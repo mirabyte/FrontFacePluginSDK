@@ -5,11 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sample_Content_Plugin"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="400">
-    <Grid>
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Vertical">
-            <TextBlock Margin="0,0,0,5">Enter some text:</TextBlock>
-            <TextBox x:Name="tbSomeText" Padding="2" />
-            <CheckBox x:Name="cbAnimateBackground" Content="Animate Background?" Margin="0,10,0,5" />
-        </StackPanel>
-    </Grid>
+    
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Orientation="Vertical">
+        <TextBlock Margin="0,0,0,5" Text="Enter some text:" />
+        <TextBox x:Name="tbSomeText" Padding="2" />
+        <CheckBox x:Name="cbAnimateBackground" Content="Animate Background?" Foreground="White" Margin="0,10,0,5" />
+    </StackPanel>
 </UserControl>

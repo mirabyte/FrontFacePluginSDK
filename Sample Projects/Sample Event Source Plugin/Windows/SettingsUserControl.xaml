@@ -10,7 +10,7 @@
             <TextBlock Text="Interval for Generating Events [sec.]:" Margin="0,0,0,5" />
             <TextBox x:Name="tbInterval" Padding="2" Width="50"  HorizontalAlignment="Left" />
 
-            <GroupBox Header="Duration:" Margin="0,10,0,5">
+            <GroupBox Header="Duration:" Margin="0,10,0,5" BorderThickness="0.5">
                 <StackPanel Orientation="Vertical" Margin="10,0,10,10">
                     <TextBlock Text="Display Duration of Playlist [sec.]:" Margin="0,10,0,5" />
                     <TextBox x:Name="tbDisplayDuration" Width="50" Padding="2" HorizontalAlignment="Left"/>
@@ -22,16 +22,16 @@
                 </StackPanel>
             </GroupBox>
 
-            <GroupBox Header="Action to Perform by the Event:" Margin="0,10,0,5">
+            <GroupBox Header="Action to Perform by the Event:" Margin="0,10,0,5" BorderThickness="0.5">
                 <StackPanel Margin="10,10,10,10">
-                    <RadioButton x:Name="rbStartPlaylist" GroupName="rgAction" Content="Start Selected Playlist" />
-                    <RadioButton x:Name="rbStopPlaylist" GroupName="rgAction" Content="Stop Playlist" />
+                    <RadioButton x:Name="rbStartPlaylist" GroupName="rgAction" Content="Start Selected Playlist" Foreground="White" />
+                    <RadioButton x:Name="rbStopPlaylist" GroupName="rgAction" Content="Stop Playlist" Foreground="White" />
                 </StackPanel>
             </GroupBox>
 
             <TextBlock Text="Placeholders:" Margin="0,10,0,5" />
             <TextBox x:Name="tbPlaceholders" AcceptsReturn="True" TextWrapping="Wrap" Height="80" Padding="2" />
-            <TextBlock FontStyle="Italic">(Enter as key=value, line by line!)</TextBlock>
+            <TextBlock FontStyle="Italic" Text="(Enter as key=value, line by line!)" />
         </StackPanel>
     </Grid>
 </UserControl>

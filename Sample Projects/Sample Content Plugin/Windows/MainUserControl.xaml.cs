@@ -9,13 +9,13 @@ namespace Sample_Content_Plugin
     public partial class MainUserControl : UserControl
     {
         private bool isAnimating;
-        private Storyboard sb;
+        private readonly Storyboard sb;
 
         public MainUserControl()
         {
             InitializeComponent();
 
-            sb = this.FindResource("sbAnimateBackground") as Storyboard;
+            sb = FindResource("sbAnimateBackground") as Storyboard;
             isAnimating = false;
         }
 
@@ -24,10 +24,7 @@ namespace Sample_Content_Plugin
         /// </summary>
         public bool Animate
         {
-            get
-            {
-                return isAnimating;
-            }
+            get => isAnimating;
             set
             {
                 if (isAnimating != value)

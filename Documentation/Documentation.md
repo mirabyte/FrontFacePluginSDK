@@ -1,7 +1,7 @@
 
 # FrontFace Plugin SDK - Documentation
 
-**Version 4.7.5** (Rel. 22-05-2024)
+**Version 4.7.6** (Rel. 23-07-2024)
 
 The *FrontFace Plugin SDK* allows you to extend the [FrontFace digital signage & kiosk software](https://www.mirabyte.com/en/frontface/) with custom functionality. The SDK (Software Development Kit) is based on the *Microsoft .NET 4.8 Framework* and *Windows Presentation Foundation (WPF)*. For developing your own plugins, you also need *Microsoft Visual Studio 2022* (both, the regular versions as well as the free [Community Editions](https://visualstudio.microsoft.com/en-US/vs/community/) are supported!). Plugins can be either written in C# (recommended) or in any other .NET language like e.g., VB.NET.
 
@@ -288,13 +288,15 @@ The ``\Assets\`` folder may also be used to store any accompanying files (such a
 
 The FrontFace Plugin SDK includes two sample plugins (a **Content Plugin** and an **Event Source Plugin**) for both Windows and Android that come with full C# source code (``Sample Content Plugin.sln`` and ``Sample Event Source Plugin.sln``) which show how a plugin can be implemented.
 
+To build the sample projects you first need to update the reference to the ``FrontFace.Plugin.dll`` assembly. This file is located in the FrontFace installation folder (``C:\Program Files\mirabyte\FrontFace\``).
+
 To test a plugin, you install the plugin in a FrontFace project using the FrontFace Assistant. However, the FrontFace Plugin SDK also includes an application called ``Plugin Tester.exe`` that helps you to test your plugins prior to trying them with FrontFace. When you start the Plugin Tester application, you can select the plugin DLL file (for testing while developing) or the final ``*.ffapx`` file from a file dialog. Alternatively, you can also specify the filename and path as command line argument for the plugin tester application (which allows an easy integration into Visual Studio or other IDEs, see [section 9](#9-debugging-plugins-using-microsoft-visual-studio) for details!).
 
 By clicking on the lifecycle steps “Load”, “Start” and “Destroy”, you can simulate the lifecycle of the plugin in the FrontFace Player App.
 
 ![Screenshot of the FrontFace Plugin Tester Application](plugintester.png)
 
-The Plugin Tester application can be used to test both, the presentation UI of a Content Plugin, the trigger of an Event Source Plugin, a Service Plugin and the the settings GUI.
+The Plugin Tester application can be used to test both, the presentation UI of a Content Plugin, the trigger of an Event Source Plugin, a Service Plugin and the the settings GUI. Please note that the Plugin Tester cannot run Android plugins since it is a Windows application.
 
 Because some plugins may have references to 3rd party DLLs that are present in the FrontFace application directory, the Plugin Tester application must be present in the same folder as the FrontFace Player App and FrontFace Assistant!
 

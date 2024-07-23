@@ -33,7 +33,9 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FrontFace.Plugin" />
+    <Reference Include="FrontFace.Plugin">
+      <HintPath>C:\Program Files\mirabyte\FrontFace\FrontFace.Plugin.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />

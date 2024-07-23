@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Sample_Event_Source_Plugin_Android
+﻿namespace Sample_Event_Source_Plugin_Android
 {
     /// <summary>
     /// This is the entry point for this plugin.
-    /// "MyEventSourcePlugin" is dervierd from "PluginEventSource" because it is an Event Source Plugin.
+    /// "MyEventSourcePlugin" is derived from "PluginEventSource" because it is an Event Source Plugin.
     /// This plugin also uses the FrontFace.Plugin.Serialization-Namespace for it's own settings class.
     /// </summary>
     public class MyEventSourcePlugin : FrontFace.Plugin.PluginEventSource
@@ -50,7 +47,7 @@ namespace Sample_Event_Source_Plugin_Android
                 action = FrontFace.Plugin.TriggerEventAction.StopPlaylist;
 
             // Prepare the placeholders dictionary
-            Dictionary<string, string> placeholders = new Dictionary<string, string>();
+            Dictionary<string, string> placeholders = [];
 
             foreach (string line in PluginSettings.Placeholders.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries))
             {
@@ -67,7 +64,7 @@ namespace Sample_Event_Source_Plugin_Android
                 }
             }
 
-            // This timer triggers the OnTrigger-Event with the paramters set in the settings
+            // This timer triggers the OnTrigger-Event with the parameters set in the settings
             OnTrigger(new FrontFace.Plugin.EventSourcePluginTriggerEventArgs()
             {
                 Action = action,
@@ -78,7 +75,7 @@ namespace Sample_Event_Source_Plugin_Android
         }
 
         /// <summary>
-        /// It gives you the ability to initalize e.g. libraries once at the start of the Player App
+        /// It gives you the ability to initialize e.g. libraries once at the start of the Player App
         /// </summary>
         public override void Initialize()
         {
@@ -86,7 +83,7 @@ namespace Sample_Event_Source_Plugin_Android
         }
 
         /// <summary>
-        /// It's called when the Player App terminates. E.g. you can clear all your resources that you've initalized in Initalize()
+        /// It's called when the Player App terminates. E.g. you can clear all your resources that you've initialized in Initialize()
         /// </summary>
         public override void Deinitialize()
         {

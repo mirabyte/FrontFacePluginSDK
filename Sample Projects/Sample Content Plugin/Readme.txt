@@ -1,0 +1,1 @@
+IMPORTANT: To build the sample projects you need to update the reference to the “FrontFace.Plugin.dll” assembly. This file is located in the FrontFace installation folder (“C:\Program Files\mirabyte\FrontFace\”).

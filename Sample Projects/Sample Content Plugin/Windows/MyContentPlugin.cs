@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// This is the entry point for this plugin.
-    /// "MyContentPlugin" is dervierd from "PluginContent" because it is a Content Plugin.
+    /// "MyContentPlugin" is derived from "PluginContent" because it is a Content Plugin.
     /// This plugin also uses the FrontFace.Plugin.Serialization-Namespace for it's own settings class.
     /// </summary>
     public class MyContentPlugin : FrontFace.Plugin.PluginContent
@@ -107,7 +107,7 @@
         }
 
         /// <summary>
-        /// It gives you the ability to initalize e.g., libraries once at the start of the Player App
+        /// It gives you the ability to initialize e.g., libraries once at the start of the Player App
         /// </summary>
         public override void Initialize()
         {
@@ -115,7 +115,7 @@
         }
 
         /// <summary>
-        /// It's called when the Player App terminates. E.g. you can clear all your resources that you've initalized in Initalize()
+        /// It's called when the Player App terminates. E.g. you can clear all your resources that you've initialized in Initialize()
         /// </summary>
         public override void Deinitialize()
         {

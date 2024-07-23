@@ -28,8 +28,8 @@ namespace Sample_Content_Plugin_Android
                 PluginSettings = new Settings();
             }
 
-            // Initalize plugin ui (only if context is valid)
-            // The context is essentially for initalization of Android views!
+            // Initialize plugin ui (only if context is valid)
+            // The context is essentially for initialization of Android views!
             if (context is Context con)
             {
                 pluginUI = new MainUserControl(con, PluginSettings);
@@ -42,17 +42,10 @@ namespace Sample_Content_Plugin_Android
         /// <summary>
         /// NotifyAppear is called shortly before this plugin will be attached to the screen.
         /// </summary>
-        /// <param name="liveView">Determines whether it should be animated yet or not.</param>
+        /// <param name="liveView">Determines whether it should be animated yet or not. On Android liveView is always fale</param>
         public override void NotifyAppear(bool liveView)
         {
-            if (liveView)
-            {
-                if (PluginSettings.AnimateBackground)
-                {
-                    pluginUI.Animate = true;
-                    hasStarted = true;
-                }
-            }
+
         }
 
         /// <summary>
@@ -63,27 +56,22 @@ namespace Sample_Content_Plugin_Android
             if (!hasStarted)
             {
                 if (PluginSettings.AnimateBackground)
-                {
-                    pluginUI.Animate = true;
-                    hasStarted = true;
-                }
+                    pluginUI.StartAnimation();
+
+                hasStarted = true;
             }
         }
 
         public override void Pause()
         {
             if (PluginSettings.AnimateBackground)
-            {
-                pluginUI.Animate = false;
-            }
+                pluginUI.StopAnimation();
         }
 
         public override void Resume()
         {
             if (PluginSettings.AnimateBackground)
-            {
-                pluginUI.Animate = true;
-            }
+                pluginUI.StartAnimation();
         }
 
         /// <summary>
@@ -92,17 +80,12 @@ namespace Sample_Content_Plugin_Android
         /// <param name="liveView">Determines whether it should be animated yet or not.</param>
         public override void NotifyDisappear(bool liveView)
         {
-            if (!liveView)
-            {
-                if (PluginSettings.AnimateBackground)
-                {
-                    pluginUI.Animate = false;
-                }
-            }
+            if (PluginSettings.AnimateBackground)
+                pluginUI.StopAnimation();
         }
 
         /// <summary>
-        /// It gives you the ability to initalize e.g. libraries once at the start of the Player App
+        /// It gives you the ability to initialize e.g. libraries once at the start of the Player App
         /// </summary>
         public override void Initialize()
         {
@@ -110,7 +93,7 @@ namespace Sample_Content_Plugin_Android
         }
 
         /// <summary>
-        /// It's called when the Player App terminates. E.g. you can clear all your resources that you've initalized in Initalize()
+        /// It's called when the Player App terminates. E.g. you can clear all your resources that you've initialized in Initialize()
         /// </summary>
         public override void Deinitialize()
         {
@@ -123,10 +106,7 @@ namespace Sample_Content_Plugin_Android
         /// </summary>
         public override void Free()
         {
-            if (PluginSettings.AnimateBackground)
-            {
-                pluginUI.Animate = false;
-            }
+
         }
     }
 }
