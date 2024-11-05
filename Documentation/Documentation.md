@@ -1,7 +1,7 @@
 
 # FrontFace Plugin SDK - Documentation
 
-**Version 4.7.8** (Rel. 06-09-2024)
+**Version 4.7.9** (Rel. 05-11-2024)
 
 The *FrontFace Plugin SDK* allows you to extend the [FrontFace digital signage & kiosk software](https://www.mirabyte.com/en/frontface/) with custom functionality. The SDK (Software Development Kit) is based on the *Microsoft .NET 4.8 Framework* and *Windows Presentation Foundation (WPF)*. For developing your own plugins, you also need *Microsoft Visual Studio 2022* (both, the regular versions as well as the free [Community Editions](https://visualstudio.microsoft.com/en-US/vs/community/) are supported!). Plugins can be either written in C# (recommended) or in any other .NET language like e.g., VB.NET.
 
